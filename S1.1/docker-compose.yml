@@ -1,0 +1,32 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: car-shop-db-pass
+      POSTGRES_DB: car-shop-db
+      POSTGRES_USER: car-shop-db
+  universal-car-shop:
+    build:
+      context: .
+      dockerfile: MainApp.Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - report-service
+    environment:
+      CONNECTIONSTRINGS__PostgreSQL: Host=postgres;Database=car-shop-db;Username=car-shop-db;Password=car-shop-db-pass
+      REPORTSERVER__URL: http://report-service:8080
+      ASPNETCORE_ENVIRONMENT: Development
+  report-service:
+    build:
+      context: .
+      dockerfile: ReportService.Dockerfile
+    ports:
+      - "8081:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+
