@@ -8,7 +8,6 @@
 * [Презентация SOLID](https://tvkaruba.github.io/kpo2025/s1.2/Семинар%20%231.2.pdf)
 * [Код 1.1](https://github.com/tvkaruba/kpo2025/tree/master/s1.1/)
 * [Код 1.2](https://github.com/tvkaruba/kpo2025/tree/master/s1.2/)
-* [Запись]()
 
 ## Семинар #2
 
